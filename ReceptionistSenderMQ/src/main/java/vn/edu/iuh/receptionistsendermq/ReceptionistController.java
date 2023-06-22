@@ -7,14 +7,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import org.apache.log4j.BasicConfigurator;
 import vn.edu.iuh.receptionistsendermq.data.Patient;
-import vn.edu.iuh.receptionistsendermq.data.Person;
 import vn.edu.iuh.receptionistsendermq.helper.XMLConvert;
 
 import javax.jms.*;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import java.util.Date;
 import java.util.Properties;
 
 public class ReceptionistController {

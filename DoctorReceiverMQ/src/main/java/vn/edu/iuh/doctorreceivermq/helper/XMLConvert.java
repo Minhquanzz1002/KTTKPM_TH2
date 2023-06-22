@@ -1,9 +1,11 @@
-package vn.edu.iuh.receptionistsendermq.helper;
+package vn.edu.iuh.doctorreceivermq.helper;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.Unmarshaller;
 
+import java.io.StringReader;
 import java.io.StringWriter;
 
 public class XMLConvert<T> {
@@ -13,12 +15,12 @@ public class XMLConvert<T> {
         this.type = type;
     }
 
-    public String objectToXML(T obj) throws JAXBException {
+    public T xmlToObject(String xml) throws JAXBException {
+        T obj = null;
         JAXBContext ctx = JAXBContext.newInstance(type.getClass());
-        Marshaller ms = ctx.createMarshaller();
-        StringWriter sw = new StringWriter();
-        ms.marshal(obj, sw);
-        return sw.toString();
+        Unmarshaller ms = ctx.createUnmarshaller();
+        obj = (T) ms.unmarshal(new StringReader(xml));
+        return obj;
     }
 
 }
